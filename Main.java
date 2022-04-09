@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        String wor = "abcdefghijklmnopqrstuvwxyz0123456789";
-        char[] letters = wor.toCharArray();
+        String alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+        char[] letters = alphabet.toCharArray();
 
         String[] code = new String[]
                 { "AA", "AD", "AF", "AG", "AV", "AX",
@@ -25,12 +25,23 @@ public class Main {
         String word = in.nextLine();
         String down = word.toLowerCase();
         String result = "";
+        String resultAll = "";
         for(int i = 0; i < down.length(); i++){
             char let = down.charAt(i);
-            int idx = wor.indexOf(let);
+            int idx = alphabet.indexOf(let);
             String one = code[idx];
             result += one;
         }
         System.out.println(result);
+
+        for(int i = 0; i != result.length(); i += 2){
+            char[] c = result.toCharArray();
+            String two = Character.toString(c[i]) + Character.toString(c[i+1]);
+            int idx = Arrays.asList(code).indexOf(two);
+            char[] k = alphabet.toCharArray();
+            char result2 = k[idx];
+            resultAll += Character.toString(result2);
+        }
+        System.out.println(resultAll);
     }
 }
